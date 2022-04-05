@@ -37,7 +37,7 @@
       </div>
     </div>
     <img
-      :src="require(`../assets/blogCards/${post.blogCoverPhoto}.jpg`)"
+      :src="post.blogCoverPhoto"
       alt=""
     />
     <div class="info">

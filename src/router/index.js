@@ -7,6 +7,8 @@ import ForgetPassword from '../views/ForgetPassword.vue';
 import Profile from '../views/Profile.vue';
 import Admin from '../views/Admin.vue';
 import CreatePost from '../views/CreatePost.vue';
+import blogPreview from '../views/BlogPreview.vue';
+import ViewBlog from '../views/ViewBlog.vue';
 //import { from } from 'core-js/core/array';
 
 const routes = [
@@ -74,6 +76,24 @@ const routes = [
       title: 'Post'
     }
   },
+  {
+    path: '/Blog-Preview',
+    name: 'blogPreview',
+    component: blogPreview,
+    meta: {
+      title: 'blogPreview'
+    }
+  },
+  {
+    path: '/view-blog',
+    name: 'ViewBlog',
+    component: ViewBlog,
+    meta: {
+      title: 'ViewBlog'
+    }
+  },
+
+ 
 
 ]
 

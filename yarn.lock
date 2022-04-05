@@ -892,6 +892,21 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
+"@babel/runtime-corejs3@^7.11.2":
+  version "7.17.8"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.17.8.tgz#d7dd49fb812f29c61c59126da3792d8740d4e284"
+  integrity sha512-ZbYSUvoSF6dXZmMl/CYTMOvzIFnbGfv4W3SEHYgMvNsFTeLaF2gkGAF4K2ddmtSK4Emej+0aYcnSC6N5dPCXUQ==
+  dependencies:
+    core-js-pure "^3.20.2"
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.11.2":
+  version "7.17.8"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.8.tgz#3e56e4aff81befa55ac3ac6a0967349fd1c5bca2"
+  integrity sha512-dQpEpK0O9o6lj6oPu0gRDbbnk+4LeHlNcBpspf6Olzt3GIX4P1lWF1gS+pHLDFlaJvbR6q7jCfQ08zA4QJBnmA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.12.13", "@babel/runtime@^7.8.4":
   version "7.17.7"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.17.7.tgz"
@@ -3001,6 +3016,11 @@ core-js-compat@^3.20.2, core-js-compat@^3.21.0, core-js-compat@^3.8.3:
   dependencies:
     browserslist "^4.19.1"
     semver "7.0.0"
+
+core-js-pure@^3.20.2:
+  version "3.21.1"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.21.1.tgz#8c4d1e78839f5f46208de7230cebfb72bc3bdb51"
+  integrity sha512-12VZfFIu+wyVbBebyHmRTuEE/tZrB4tJToWcwAMcsp3h4+sHR+fMJWbKpYiCRWlhFBq+KNyO8rIV9rTkeVmznQ==
 
 core-js@3.6.5:
   version "3.6.5"
@@ -7844,6 +7864,14 @@ vary@~1.1.2:
   resolved "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
+vc-wangeditor@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vc-wangeditor/-/vc-wangeditor-1.0.1.tgz#0078fe4bd7f85ad30578fd8967ce951a0c9cfbab"
+  integrity sha512-vsu2ZzbcZFbdxIlgZrmp+vnGwyDLaFNvsPttJJXfbiZEUAOLZv0D6SqTn/+EVsslO6MOOvdmHgxA+8DYa6gmWw==
+  dependencies:
+    core-js "^3.8.3"
+    wangeditor "^4.7.12"
+
 verror@1.10.0:
   version "1.10.0"
   resolved "https://registry.npmjs.org/verror/-/verror-1.10.0.tgz"
@@ -7949,6 +7977,15 @@ walk@2.3.15:
   integrity sha512-4eRTBZljBfIISK1Vnt69Gvr2w/wc3U6Vtrw7qiN5iqYJPH7LElcYh/iU4XWhdCy2dZqv1ToMyYlybDylfG/5Vg==
   dependencies:
     foreachasync "^3.0.0"
+
+wangeditor@^4.7.12:
+  version "4.7.13"
+  resolved "https://registry.yarnpkg.com/wangeditor/-/wangeditor-4.7.13.tgz#f0e237b39d1aa4fd139089aa3ed7e1ecc01da0d9"
+  integrity sha512-kT0jQgTgPoe3tiYiHWbS3QV5yfklcvCXF28irqgU/rOCHKP5Bnv5z/h+ACQAdUhznsfYShpWWzzhs6PLFoPBHQ==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    "@babel/runtime-corejs3" "^7.11.2"
+    tslib "^2.1.0"
 
 watchpack@^2.3.1:
   version "2.3.1"

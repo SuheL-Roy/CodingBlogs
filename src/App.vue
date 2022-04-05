@@ -58,6 +58,7 @@ export default {
   watch: {
     $route(){
       this.CheckRoute();
+      this.$store.dispatch("getPost");
     }
   },
 };
