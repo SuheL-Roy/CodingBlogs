@@ -82,7 +82,7 @@
           </svg>
         </div>
         <div class="input">
-          <input type="text" placeholder="Password" v-model="password" />
+          <input type="password" placeholder="Password" v-model="password" />
           <svg
             aria-hidden="true"
             focusable="false"
@@ -99,8 +99,9 @@
             ></path>
           </svg>
         </div>
+        <div v-show="error" class="error">{{ this.errorMsg }}</div>
       </div>
-      <button>Sign Up</button>
+      <button @click.prevent="register">Sign Up</button>
       <div class="angle"></div>
     </form>
     <div class="background"></div>
@@ -108,15 +109,94 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/auth";
+import db from "../firebase/firebaseinit.js";
 export default {
   name: "Register",
+  components: {},
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      userName: "",
+      email: "",
+      password: "",
+      error: "",
+      errorMsg: "",
+    };
+  },
+  methods: {
+    async register() {
+      // console.log("kkk")
+      if (
+        this.email !== "" &&
+        this.password !== "" &&
+        this.firstName !== "" &&
+        this.lastName !== "" &&
+        this.userName !== ""
+      ) {
+        this.error = false;
+        this.errorMsg = "";
+        const firebaseAuth = await firebase.auth();
+        const createUser = await firebaseAuth.createUserWithEmailAndPassword(
+          this.email,
+          this.password
+        );
+        const result = await createUser;
+        const database = db.collection("Users").doc(result.user.uid);
+        await database.set({
+          firstName: this.firstName,
+          lastName: this.lastName,
+          userName: this.userName,
+          email: this.email,
+          password:this.password
+        });
+        this.$router.push({ name: 'Home' });
+        return;
+      }
+      this.error = true;
+      this.errorMsg = "Please fill out all the field";
+    },
+  },
 };
+
+//  async register() {
+//    console.log("jsjs")
+//       if (
+//         this.email !== "" &&
+//         this.password !== "" &&
+//         this.firstName !== "" &&
+//         this.lastName !== "" &&
+//         this.username !== ""
+//       ) {
+//         this.error = false;
+//         this.errorMsg = "";
+//         const firebaseAuth = await firebase.auth();
+//         const createUser = await firebaseAuth.createUserWithEmailAndPassword(this.email, this.password);
+//         const result = await createUser;
+//         const dataBase = db.collection("users").doc(result.user.uid);
+//         await dataBase.set({
+//           firstName: this.firstName,
+//           lastName: this.lastName,
+//           username: this.username,
+//           email: this.email,
+//         });
+//         this.$router.push({ name: "Home" });
+//         return;
+//       }
+//       this.error = true;
+//       this.errorMsg = "Please fill out all the fields!";
+//       return;
+//     },
+//   },
+// };
 </script>
 
 <style lang="scss" scoped>
-  .register {
+.register {
   h2 {
     max-width: 500px;
   }
-  }
+}
 </style>

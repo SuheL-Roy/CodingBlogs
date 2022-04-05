@@ -28,7 +28,7 @@
           </svg>
         </div>
         <div class="input">
-          <input type="text" placeholder="Password" v-model="password" />
+          <input type="password" placeholder="Password" v-model="password" />
           <svg
             aria-hidden="true"
             focusable="false"
@@ -45,11 +45,12 @@
             ></path>
           </svg>
         </div>
+        <div v-show="error" class="error">{{this.errorMsg}}</div>
       </div>
       <router-link class="forgot-password" :to="{ name: 'ForgetPassword' }"
         >Forget your password</router-link
       >
-      <button>Sign In</button>
+      <button @click.prevent="SignIn">Sign In</button>
       <div class="angle"></div>
     </form>
     <div class="background"></div>
@@ -57,15 +58,40 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/auth";
 export default {
   name: "Login",
   components:{},
   data(){
     return{
-      email:null,
-      password:null
+      email:"",
+      password:"",
+      error:null,
+      errorMsg:""
+    }
+  },
+  methods:{
+    async SignIn(){
+     // console.log("clicked");
+     firebase.auth().signInWithEmailAndPassword(this.email,this.password)
+     .then(()=>{
+      // window.location.reload();
+       this.$router.push({ name:"Home"});
+       //window.location.reload();
+       //this.$router.push({ name:'Home'});
+       this.error = false;
+       this.errorMsg = "";
+     //  window.location.reload();
+       console.log(firebase.auth().currentUser.uid);
+      
+     }).catch((err)=>{
+       this.error = true;
+       this.errorMsg = err.message;
+     })
     }
   }
+  
 };
 </script>
 
